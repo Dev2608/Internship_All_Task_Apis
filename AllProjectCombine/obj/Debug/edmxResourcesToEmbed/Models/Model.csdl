@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="course_detail">
+    <Key>
+      <PropertyRef Name="course_code" />
+    </Key>
+    <Property Name="course_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee1">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="emp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="faculty">
+    <Key>
+      <PropertyRef Name="f_id" />
+    </Key>
+    <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facultyDetail">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="joinendEmployee">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="emp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="join_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="purchase_table">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total_amount" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchaseProductTable">
+    <Key>
+      <PropertyRef Name="purchase_product_id" />
+    </Key>
+    <Property Name="purchase_product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_id" Type="Int32" Nullable="false" />
+    <Property Name="item_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchaseTable">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_number" Type="Int32" Nullable="false" />
+    <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="total_amount" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="result">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="cpi" Type="Double" Nullable="false" />
+    <Property Name="semester" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="s_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="s_mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="s_age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student1">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="s_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="s_mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="s_age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facultyList">
+    <Key>
+      <PropertyRef Name="f_id" />
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FinalDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="course_detail" EntityType="Self.course_detail" />
+    <EntitySet Name="employee1" EntityType="Self.employee1" />
+    <EntitySet Name="faculties" EntityType="Self.faculty" />
+    <EntitySet Name="facultyDetails" EntityType="Self.facultyDetail" />
+    <EntitySet Name="joinendEmployees" EntityType="Self.joinendEmployee" />
+    <EntitySet Name="purchase_table" EntityType="Self.purchase_table" />
+    <EntitySet Name="purchaseProductTables" EntityType="Self.purchaseProductTable" />
+    <EntitySet Name="purchaseTables" EntityType="Self.purchaseTable" />
+    <EntitySet Name="registers" EntityType="Self.register" />
+    <EntitySet Name="results" EntityType="Self.result" />
+    <EntitySet Name="students" EntityType="Self.student" />
+    <EntitySet Name="students1" EntityType="Self.student1" />
+    <EntitySet Name="facultyLists" EntityType="Self.facultyList" />
+  </EntityContainer>
+</Schema>

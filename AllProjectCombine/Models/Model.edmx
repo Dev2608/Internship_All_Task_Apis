@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FinalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="course_detail">
+          <Key>
+            <PropertyRef Name="course_code" />
+          </Key>
+          <Property Name="course_code" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="course" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee1">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="faculty">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="course" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facultyDetail">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FinalDB.dbo.facultyList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="facultyList">
+          <Key>
+            <PropertyRef Name="f_id" />
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="joinendEmployee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="emp_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="join_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchase_table">
+          <Key>
+            <PropertyRef Name="purchase_id" />
+          </Key>
+          <Property Name="purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchase_number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="purchase_date" Type="datetime" Nullable="false" />
+          <Property Name="total_amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchaseProductTable">
+          <Key>
+            <PropertyRef Name="purchase_product_id" />
+          </Key>
+          <Property Name="purchase_product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchase_id" Type="int" Nullable="false" />
+          <Property Name="item_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="qty" Type="int" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchaseTable">
+          <Key>
+            <PropertyRef Name="purchase_id" />
+          </Key>
+          <Property Name="purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchase_number" Type="int" Nullable="false" />
+          <Property Name="purchase_date" Type="datetime" Nullable="false" />
+          <Property Name="total_amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userid" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="mobile" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="result">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="cpi" Type="float" Nullable="false" />
+          <Property Name="semester" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="s_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="s_mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="s_age" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="s_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="s_mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="s_age" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FinalDBModelStoreContainer">
+          <EntitySet Name="course_detail" EntityType="Self.course_detail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee1" EntityType="Self.employee1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="faculty" EntityType="Self.faculty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="facultyDetail" EntityType="Self.facultyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="joinendEmployee" EntityType="Self.joinendEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchase_table" EntityType="Self.purchase_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchaseProductTable" EntityType="Self.purchaseProductTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchaseTable" EntityType="Self.purchaseTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="result" EntityType="Self.result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="facultyList" EntityType="Self.facultyList" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [facultyList].[f_id] AS [f_id], 
+    [facultyList].[s_id] AS [s_id]
+    FROM [dbo].[facultyList] AS [facultyList]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="course_detail">
+          <Key>
+            <PropertyRef Name="course_code" />
+          </Key>
+          <Property Name="course_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employee1">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="faculty">
+          <Key>
+            <PropertyRef Name="f_id" />
+          </Key>
+          <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facultyDetail">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="joinendEmployee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="emp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="join_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="purchase_table">
+          <Key>
+            <PropertyRef Name="purchase_id" />
+          </Key>
+          <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchase_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchaseProductTable">
+          <Key>
+            <PropertyRef Name="purchase_product_id" />
+          </Key>
+          <Property Name="purchase_product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchase_id" Type="Int32" Nullable="false" />
+          <Property Name="item_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qty" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="purchaseTable">
+          <Key>
+            <PropertyRef Name="purchase_id" />
+          </Key>
+          <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchase_number" Type="Int32" Nullable="false" />
+          <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="total_amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="register">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="result">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="cpi" Type="Double" Nullable="false" />
+          <Property Name="semester" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="s_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="s_mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="s_age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="student1">
+          <Key>
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="s_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="s_mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="s_age" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facultyList">
+          <Key>
+            <PropertyRef Name="f_id" />
+            <PropertyRef Name="s_id" />
+          </Key>
+          <Property Name="f_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="s_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FinalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="course_detail" EntityType="Self.course_detail" />
+          <EntitySet Name="employee1" EntityType="Self.employee1" />
+          <EntitySet Name="faculties" EntityType="Self.faculty" />
+          <EntitySet Name="facultyDetails" EntityType="Self.facultyDetail" />
+          <EntitySet Name="joinendEmployees" EntityType="Self.joinendEmployee" />
+          <EntitySet Name="purchase_table" EntityType="Self.purchase_table" />
+          <EntitySet Name="purchaseProductTables" EntityType="Self.purchaseProductTable" />
+          <EntitySet Name="purchaseTables" EntityType="Self.purchaseTable" />
+          <EntitySet Name="registers" EntityType="Self.register" />
+          <EntitySet Name="results" EntityType="Self.result" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="students1" EntityType="Self.student1" />
+          <EntitySet Name="facultyLists" EntityType="Self.facultyList" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinalDBModelStoreContainer" CdmEntityContainer="FinalDBEntities">
+          <EntitySetMapping Name="course_detail">
+            <EntityTypeMapping TypeName="FinalDBModel.course_detail">
+              <MappingFragment StoreEntitySet="course_detail">
+                <ScalarProperty Name="course_code" ColumnName="course_code" />
+                <ScalarProperty Name="course" ColumnName="course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee1">
+            <EntityTypeMapping TypeName="FinalDBModel.employee1">
+              <MappingFragment StoreEntitySet="employee1">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="faculties">
+            <EntityTypeMapping TypeName="FinalDBModel.faculty">
+              <MappingFragment StoreEntitySet="faculty">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="course" ColumnName="course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facultyDetails">
+            <EntityTypeMapping TypeName="FinalDBModel.facultyDetail">
+              <MappingFragment StoreEntitySet="facultyDetail">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="joinendEmployees">
+            <EntityTypeMapping TypeName="FinalDBModel.joinendEmployee">
+              <MappingFragment StoreEntitySet="joinendEmployee">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+                <ScalarProperty Name="join_date" ColumnName="join_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchase_table">
+            <EntityTypeMapping TypeName="FinalDBModel.purchase_table">
+              <MappingFragment StoreEntitySet="purchase_table">
+                <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+                <ScalarProperty Name="purchase_number" ColumnName="purchase_number" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchaseProductTables">
+            <EntityTypeMapping TypeName="FinalDBModel.purchaseProductTable">
+              <MappingFragment StoreEntitySet="purchaseProductTable">
+                <ScalarProperty Name="purchase_product_id" ColumnName="purchase_product_id" />
+                <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+                <ScalarProperty Name="item_name" ColumnName="item_name" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchaseTables">
+            <EntityTypeMapping TypeName="FinalDBModel.purchaseTable">
+              <MappingFragment StoreEntitySet="purchaseTable">
+                <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+                <ScalarProperty Name="purchase_number" ColumnName="purchase_number" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registers">
+            <EntityTypeMapping TypeName="FinalDBModel.register">
+              <MappingFragment StoreEntitySet="register">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="results">
+            <EntityTypeMapping TypeName="FinalDBModel.result">
+              <MappingFragment StoreEntitySet="result">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="cpi" ColumnName="cpi" />
+                <ScalarProperty Name="semester" ColumnName="semester" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="FinalDBModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="s_mobile" ColumnName="s_mobile" />
+                <ScalarProperty Name="s_age" ColumnName="s_age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students1">
+            <EntityTypeMapping TypeName="FinalDBModel.student1">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="s_mobile" ColumnName="s_mobile" />
+                <ScalarProperty Name="s_age" ColumnName="s_age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facultyLists">
+            <EntityTypeMapping TypeName="FinalDBModel.facultyList">
+              <MappingFragment StoreEntitySet="facultyList">
+                <ScalarProperty Name="f_id" ColumnName="f_id" />
+                <ScalarProperty Name="s_id" ColumnName="s_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

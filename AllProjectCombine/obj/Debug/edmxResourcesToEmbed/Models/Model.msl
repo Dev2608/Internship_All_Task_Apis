@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FinalDBModelStoreContainer" CdmEntityContainer="FinalDBEntities">
+    <EntitySetMapping Name="course_detail">
+      <EntityTypeMapping TypeName="FinalDBModel.course_detail">
+        <MappingFragment StoreEntitySet="course_detail">
+          <ScalarProperty Name="course_code" ColumnName="course_code" />
+          <ScalarProperty Name="course" ColumnName="course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee1">
+      <EntityTypeMapping TypeName="FinalDBModel.employee1">
+        <MappingFragment StoreEntitySet="employee1">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+          <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="faculties">
+      <EntityTypeMapping TypeName="FinalDBModel.faculty">
+        <MappingFragment StoreEntitySet="faculty">
+          <ScalarProperty Name="f_id" ColumnName="f_id" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="course" ColumnName="course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facultyDetails">
+      <EntityTypeMapping TypeName="FinalDBModel.facultyDetail">
+        <MappingFragment StoreEntitySet="facultyDetail">
+          <ScalarProperty Name="f_id" ColumnName="f_id" />
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="joinendEmployees">
+      <EntityTypeMapping TypeName="FinalDBModel.joinendEmployee">
+        <MappingFragment StoreEntitySet="joinendEmployee">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+          <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+          <ScalarProperty Name="join_date" ColumnName="join_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchase_table">
+      <EntityTypeMapping TypeName="FinalDBModel.purchase_table">
+        <MappingFragment StoreEntitySet="purchase_table">
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="purchase_number" ColumnName="purchase_number" />
+          <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchaseProductTables">
+      <EntityTypeMapping TypeName="FinalDBModel.purchaseProductTable">
+        <MappingFragment StoreEntitySet="purchaseProductTable">
+          <ScalarProperty Name="purchase_product_id" ColumnName="purchase_product_id" />
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="item_name" ColumnName="item_name" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchaseTables">
+      <EntityTypeMapping TypeName="FinalDBModel.purchaseTable">
+        <MappingFragment StoreEntitySet="purchaseTable">
+          <ScalarProperty Name="purchase_id" ColumnName="purchase_id" />
+          <ScalarProperty Name="purchase_number" ColumnName="purchase_number" />
+          <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registers">
+      <EntityTypeMapping TypeName="FinalDBModel.register">
+        <MappingFragment StoreEntitySet="register">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="results">
+      <EntityTypeMapping TypeName="FinalDBModel.result">
+        <MappingFragment StoreEntitySet="result">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="cpi" ColumnName="cpi" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="FinalDBModel.student">
+        <MappingFragment StoreEntitySet="student">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="s_name" ColumnName="s_name" />
+          <ScalarProperty Name="s_mobile" ColumnName="s_mobile" />
+          <ScalarProperty Name="s_age" ColumnName="s_age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students1">
+      <EntityTypeMapping TypeName="FinalDBModel.student1">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+          <ScalarProperty Name="s_name" ColumnName="s_name" />
+          <ScalarProperty Name="s_mobile" ColumnName="s_mobile" />
+          <ScalarProperty Name="s_age" ColumnName="s_age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facultyLists">
+      <EntityTypeMapping TypeName="FinalDBModel.facultyList">
+        <MappingFragment StoreEntitySet="facultyList">
+          <ScalarProperty Name="f_id" ColumnName="f_id" />
+          <ScalarProperty Name="s_id" ColumnName="s_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

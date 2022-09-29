@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FinalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="course_detail">
+    <Key>
+      <PropertyRef Name="course_code" />
+    </Key>
+    <Property Name="course_code" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="course" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employee1">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emp_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="faculty">
+    <Key>
+      <PropertyRef Name="f_id" />
+    </Key>
+    <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="f_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="course" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="facultyDetail">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'FinalDB.dbo.facultyList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="facultyList">
+    <Key>
+      <PropertyRef Name="f_id" />
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="f_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="joinendEmployee">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emp_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="join_date" Type="datetime" Nullable="false" />
+    <Property Name="end_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchase_table">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchase_number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="purchase_date" Type="datetime" Nullable="false" />
+    <Property Name="total_amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchaseProductTable">
+    <Key>
+      <PropertyRef Name="purchase_product_id" />
+    </Key>
+    <Property Name="purchase_product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchase_id" Type="int" Nullable="false" />
+    <Property Name="item_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="qty" Type="int" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="purchaseTable">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchase_number" Type="int" Nullable="false" />
+    <Property Name="purchase_date" Type="datetime" Nullable="false" />
+    <Property Name="total_amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="register">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userid" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mobile" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="result">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="cpi" Type="float" Nullable="false" />
+    <Property Name="semester" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="s_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="s_mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="s_age" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="s_id" />
+    </Key>
+    <Property Name="s_id" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="s_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="s_mobile" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="s_age" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FinalDBModelStoreContainer">
+    <EntitySet Name="course_detail" EntityType="Self.course_detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee1" EntityType="Self.employee1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="faculty" EntityType="Self.faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="facultyDetail" EntityType="Self.facultyDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="joinendEmployee" EntityType="Self.joinendEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchase_table" EntityType="Self.purchase_table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchaseProductTable" EntityType="Self.purchaseProductTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchaseTable" EntityType="Self.purchaseTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="register" EntityType="Self.register" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="result" EntityType="Self.result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="facultyList" EntityType="Self.facultyList" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [facultyList].[f_id] AS [f_id], 
+    [facultyList].[s_id] AS [s_id]
+    FROM [dbo].[facultyList] AS [facultyList]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

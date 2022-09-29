@@ -1,0 +1,42 @@
+--select .. into statement--
+--this sstatement is used when we don't know the name of the table or we want to create new table--
+--copy all the attributes of one table to another table in same database--
+
+select * from register;
+select * into temp1 from register;
+select * from temp1;
+
+--copy some of selected attrbutes of one table to another table in same database--
+
+select name,userid,mobile into temp2 from register;
+select * from temp2;
+
+--copy all the attributes of one table to another table in other database--
+
+select * into checking.dbo.temp from FinalDB.dbo.register;
+--select * into checking.dbo.temp1 from register;--
+
+--insert into select statement--
+--in this statement, we have to first one table in which we want to copy the existing data--
+
+truncate table temp1;
+truncate table temp2;
+select * from temp1;
+select * from temp2;
+
+INSERT INTO temp1 SELECT * FROM register;
+insert into temp2 select name,userid,mobile from register;
+--for another database table--
+insert into checking.dbo.temp SELECT * FROM register;
+
+
+--WITH CLAUSE--
+
+With Student_AvgMarks(avgmarks)
+
+As
+(Select Avg(marks) From studentmarks)
+
+Select rollno,name,marks From studentmarks , Student_AvgMarks
+Where studentmarks.marks > Student_AvgMarks.avgmarks;
+

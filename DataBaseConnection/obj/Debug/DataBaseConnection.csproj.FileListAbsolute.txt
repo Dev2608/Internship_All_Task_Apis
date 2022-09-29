@@ -1,0 +1,6 @@
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\obj\Debug\DataBaseConnection.csproj.CoreCompileInputs.cache
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\bin\Debug\DataBaseConnection.dll
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\bin\Debug\DataBaseConnection.pdb
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\obj\Debug\DataBaseConnection.dll
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\obj\Debug\DataBaseConnection.pdb
+C:\Users\Asus\Desktop\AllProjectCombine\DataBaseConnection\obj\Debug\DataBaseConnection.csproj.AssemblyReference.cache
